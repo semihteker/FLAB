@@ -35,6 +35,7 @@ stateType [3:0] state,nextState;
 always_ff@(posedge clk,posedge reset) begin
         state <=(reset)?init:nextState;
 end
+//arranging the position of bird and keep track of last coming obstacle 
 always_comb
      case(state)
         init:begin
