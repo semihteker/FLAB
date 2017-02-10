@@ -42,23 +42,20 @@ always_comb
             out[7:0] = {8{1'b0}};
             nextState = (cont)?S0:init;
         end    
-        S0:
-        begin
+        S0:begin
              out[7:1]={7{1'b0}};
              out[0]=inp1[1];
              last = inp1[1];            
              nextState =(cont)?S1:S0;        
         end
-        S1:
-        begin
+        S1:begin
             out[7:2]={6{1'b0}};
             out[1]=inp1[1];
             out[0]=inp1[0];
             last = (inp1[1][4:0] > inp1[0][4:0])?inp1[1]:inp1[0];
             nextState =(cont)?S2:S1;
         end
-        S2:
-        begin
+        S2:begin
             out[7:3]={5{1'b0}};
             out[0]=1'b0;
             out[2]=inp1[1];
@@ -66,8 +63,7 @@ always_comb
             last = (inp1[1][4:0] > inp1[0][4:0])?inp1[1]:inp1[0]; 
             nextState =(cont)?S3:S2;
         end
-        S3:
-        begin
+        S3:begin
             out[7:4]={4{1'b0}};
             out[3]=inp1[1];
             out[2]=inp1[0]; 
@@ -75,8 +71,7 @@ always_comb
             out[1:0]={2{1'b0}};
             nextState =(cont)?S4:S3;
         end
-        S4:
-        begin
+        S4:begin
             out[7:5]={3{1'b0}};
             out[4]=inp1[1];
             out[3]=inp1[0];
@@ -84,8 +79,7 @@ always_comb
             out[2:0]={3{1'b0}};
             nextState =(cont)?S5:S4;
         end
-        S5:
-        begin
+        S5:begin
             out[7:6]={2{1'b0}};
             out[5]=inp1[1];
             out[4]=inp1[0];
@@ -93,8 +87,7 @@ always_comb
             out[3:0]={4{1'b0}};
             nextState =(cont)?S6:S5;
         end
-        S6:
-        begin
+        S6:begin
             out[6]=inp1[1];
             out[5]=inp1[0];
             out[0]=inp0[1];
@@ -103,8 +96,7 @@ always_comb
             out[7] = 1'b0;
             nextState =(cont)?S7:S6;
         end
-        S7:
-        begin
+        S7:begin
             out[7]=inp1[1];
             out[6]=inp1[0];
             last = (inp1[1][4:0] > inp1[0][4:0])?inp1[1]:inp1[0];
@@ -113,8 +105,7 @@ always_comb
             out[5:2]={4{1'b0}};
             nextState =(cont)?S8:S7;
         end
-        S8:
-        begin
+        S8:begin
             out[7]=inp1[0];
             out[2]=inp0[1];
             out[1]=inp0[0];
