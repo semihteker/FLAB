@@ -4,6 +4,8 @@
 
 Hardware project that is implemented on SystemVerilog using Xilinx Vivado® Design Suite. Extended and modified version of Flappy Bird with powerful random generators, artificial intelligence mode and several difficulty levels. Displayed on 8*8 Led Matrix Module.
 
+-
+
 MIT License
 
 Copyright (c) 2017 sonmezonur
