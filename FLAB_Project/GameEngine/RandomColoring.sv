@@ -23,6 +23,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////
 
+// Powerful Random Generator with LinearShiftBackRegister!
 
 module RandomColoring(input logic clk,clk_en,load,
                       input logic[5:0] seed,
