@@ -10,7 +10,9 @@ Hardware project that is implemented on SystemVerilog using Xilinx Vivado® Desi
 
 -
 Cs223 Digital Design Project
+
 Overall - 99/100 
+
 Demonstration and Final Report - 50/50
 
 -
