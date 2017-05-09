@@ -9,6 +9,11 @@ Note: My dear fellas if you are referencing the code, at least star the reposito
 Hardware project that is implemented on SystemVerilog using Xilinx Vivado® Design Suite. Extended and modified version of Flappy Bird with powerful random generators, artificial intelligence mode and several difficulty levels. Displayed on 8*8 Led Matrix Module.
 
 -
+Cs223 Digital Design Project
+Overall - 99/100 
+Demonstration and Final Report - 50/50
+
+-
 
 MIT License
 
