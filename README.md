@@ -3,30 +3,8 @@
 ![img-20161225-wa0040](https://cloud.githubusercontent.com/assets/12400946/22162330/f17b7a40-df56-11e6-8fa3-2927815ce45e.jpg)
 
 
-Note: My dear fellas if you are referencing the code, do not forget to put star on repository! Good Luck...
-
 
 Hardware project that is implemented on SystemVerilog using Xilinx Vivado® Design Suite. Extended and modified version of Flappy Bird with powerful random generators, artificial intelligence mode and several difficulty levels. Displayed on 8*8 Led Matrix Module.
 
 
 MIT License
-
-Copyright (c) 2017 sonmezonur
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
