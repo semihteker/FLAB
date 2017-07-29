@@ -1,24 +1,23 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
+// Company:
 // Engineer: Onur SÖNMEZ
-// 
+//
 // Create Date: 11/15/2016 08:33:20 AM
-// Design Name: 
+// Design Name:
 // Module Name: topmodule
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
+// Project Name:
+// Target Devices:
+// Tool Versions:
 // Description: Top module of project
-// 
-// Dependencies: 
-// 
+//
+// Dependencies:
+//
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
-
 
 module topmodule(input logic buttonIn,clk,start,mode,art,
                  input logic[1:0] difficultyLevel,
@@ -35,7 +34,7 @@ logic[7:0][23:0] bird;
 logic[7:0][23:0] obs;
 logic[7:0][23:0] stateOut;
 logic[7:0][23:0] in;
-logic[1:0][23:0] obstacle1;   
+logic[1:0][23:0] obstacle1;
 logic[1:0][23:0] obstacle0;
 logic[23:0] concat1;
 logic[23:0] concat2;
@@ -76,10 +75,10 @@ always@ (posedge clk) begin
    if (countObs==29'd0)
        obstacle_en <= 1'b1;
    else
-       obstacle_en <= 1'b0;  
+       obstacle_en <= 1'b0;
     if(countObs == 29'd6)//needs 6 rising edge clocks first!
-        load <= 0; 
-   end 
+        load <= 0;
+   end
 end
 
 //Picks the mode of game (artificial or user-controller)
@@ -89,7 +88,7 @@ always_comb begin
         birdMot = push;
     else
         birdMot = buttonOut;
-end 
+end
 
 DifficultyLevel difficulty(difficultyLevel,size,nums);//difficulty
 ButtonSynchronizer but(buttonIn,clk,reset,buttonOut);//call button synchronizer module
@@ -103,12 +102,12 @@ BirdMotion motion(birdMot,cont,clk_en,reset,bird[5],bird[6],gameOver);
 StateControl stateControl(clk,endGame,gameFinished,start,act,reset,stateOut);
 
 //arranging according to the state of game
-always_comb begin  
+always_comb begin
   if(endGame == 1'b1)
     in[7:0] = {stateOut[7:0]};
-  else  
-    in[7:0] = {bird[7:0]} + 
-               {obs[7:0]} + 
+  else
+    in[7:0] = {bird[7:0]} +
+               {obs[7:0]} +
                {stateOut[7:0]};//concat bird and obstacle motion
 end
 
@@ -118,9 +117,9 @@ controller cont2[23:0]({bird[5][23:0]},{obs[5][23:0]},{concat2[23:0]});
 
 //Collision Detector
 always_comb begin
-        if( concat1 == 24'd0 && concat2 == 24'd0) 
+        if( concat1 == 24'd0 && concat2 == 24'd0)
             collision = 1'b0;
-        else 
+        else
             collision = 1'b1;
         if( bird[5] == 24'd0 && obs[5] != 24'd0)
             collision = 1'b1;
@@ -129,5 +128,5 @@ end
 PlayChecker checkGame(gameOver,gameFinished,collision,endGame);//checks if the game over
 LedMatrix led(clk, in, rowsOut,shcp, stcp, mr, oe, ds);
 SevSeg_4digit s(clk, difficultyLevel[0],difficultyLevel[1], difficultyLevel[2], difficultyLevel[3],a, b, c, d, e, f, g, dp,an);
-                 
+
 endmodule

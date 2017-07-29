@@ -1,25 +1,24 @@
 
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
+// Company:
 // Engineer: Onur Sönmez
-// 
+//
 // Create Date: 12/16/2016 01:05:12 AM
-// Design Name: 
+// Design Name:
 // Module Name: DifficultyLevel
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
+// Project Name:
+// Target Devices:
+// Tool Versions:
+// Description:
+//
+// Dependencies:
+//
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
-
 
 module DifficultyLevel(input logic[1:0] difficulty,
                        output logic[28:0] size,
@@ -43,5 +42,5 @@ module DifficultyLevel(input logic[1:0] difficulty,
                  nums = 3'd3;
              end
             default: size = 29'd60000000;
-        endcase    
+        endcase
 endmodule

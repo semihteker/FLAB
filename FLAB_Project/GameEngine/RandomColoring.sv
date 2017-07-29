@@ -1,28 +1,25 @@
-           
-                 
+
+
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
+// Company:
+// Engineer:
+//
 // Create Date: 12/13/2016 03:28:34 PM
-// Design Name: 
+// Design Name:
 // Module Name: RandomColoring
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
+// Project Name:
+// Target Devices:
+// Tool Versions:
+// Description:
+//
+// Dependencies:
+//
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////////////
-
 // Powerful Random Generator with LinearShiftBackRegister!
 
 module RandomColoring(input logic clk,clk_en,load,
@@ -34,10 +31,10 @@ module RandomColoring(input logic clk,clk_en,load,
     lfsr lfsr(clk,clk_en,load,seed,first,second);
     assign concat[2:0] = first[2:0];
     assign concat[4:3] = second[1:0];
-   
-                                 
+
+
     always_comb
-        begin 
+        begin
             case(concat)
                 5'd0: out = 24'b10000101_11001101_01001001;
                 5'd1: out = 24'b11011001_10101010_10101010;
@@ -74,5 +71,3 @@ module RandomColoring(input logic clk,clk_en,load,
             endcase
         end
 endmodule
-
-

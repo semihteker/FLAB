@@ -1,31 +1,30 @@
-
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
+// Company:
+// Engineer:
+//
 // Create Date: 12/14/2016 03:21:45 PM
-// Design Name: 
+// Design Name:
 // Module Name: Smile
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
+// Project Name:
+// Target Devices:
+// Tool Versions:
+// Description:
+//
+// Dependencies:
+//
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
 
 module Smiley(input logic clk,clk_en,load,
               input logic[2:0] seed,
               output logic[7:0][23:0] out);
-    logic[2:0] smiley;   
+    logic[2:0] smiley;
     lfsr_3bit lfsr_3bit(clk,clk_en,load,seed,smiley);
-    
+
     always_comb
         case(smiley)
             3'b000:begin
@@ -46,7 +45,7 @@ module Smiley(input logic clk,clk_en,load,
                 out[3] = 24'b00000000_00000000_10000101;
                 out[2] = 24'b00000000_00000000_10101001;
                 out[1] = 24'b00000000_00000000_01000010;
-                out[0] = 24'b00000000_00000000_00111100; 
+                out[0] = 24'b00000000_00000000_00111100;
            end
            3'b010:begin
                 out[7] = 24'b00111100_00000000_00000000;
@@ -56,7 +55,7 @@ module Smiley(input logic clk,clk_en,load,
                 out[3] = 24'b10000101_00000000_00000000;
                 out[2] = 24'b10101001_00000000_00000000;
                 out[1] = 24'b01000010_00000000_00000000;
-                out[0] = 24'b00111100_00000000_00000000; 
+                out[0] = 24'b00111100_00000000_00000000;
            end
            3'b011:begin
                 out[7] = 24'b00111100_00111100_00000000;
@@ -66,7 +65,7 @@ module Smiley(input logic clk,clk_en,load,
                 out[3] = 24'b10000101_10000101_00000000;
                 out[2] = 24'b10101001_10101001_00000000;
                 out[1] = 24'b01000010_01000010_00000000;
-                out[0] = 24'b00111100_00111100_00000000;          
+                out[0] = 24'b00111100_00111100_00000000;
            end
            3'b100:begin
                 out[7] = 24'b00111100_00111100_00111100;
@@ -76,7 +75,7 @@ module Smiley(input logic clk,clk_en,load,
                 out[3] = 24'b10000101_10000101_10000101;
                 out[2] = 24'b10101001_10101001_10101001;
                 out[1] = 24'b01000010_01000010_01000010;
-                out[0] = 24'b00111100_00111100_00111100;    
+                out[0] = 24'b00111100_00111100_00111100;
            end
            3'b101:begin
                 out[7] = 24'b00000000_00111100_00111100;
@@ -86,7 +85,7 @@ module Smiley(input logic clk,clk_en,load,
                 out[3] = 24'b00000000_10000101_10000101;
                 out[2] = 24'b00000000_10101001_10101001;
                 out[1] = 24'b00000000_01000010_01000010;
-                out[0] = 24'b00000000_00111100_00111100;     
+                out[0] = 24'b00000000_00111100_00111100;
            end
            3'b110:begin
                 out[7] = 24'b00111100_00000000_00111100;
@@ -96,7 +95,7 @@ module Smiley(input logic clk,clk_en,load,
                 out[3] = 24'b10000101_00000000_10000101;
                 out[2] = 24'b10101001_00000000_10101001;
                 out[1] = 24'b01000010_00000000_01000010;
-                out[0] = 24'b00111100_00000000_00111100;    
+                out[0] = 24'b00111100_00000000_00111100;
            end
            3'b111:begin
                 out[7] = 24'b00111100_00000000_00000000;
@@ -106,9 +105,8 @@ module Smiley(input logic clk,clk_en,load,
                 out[3] = 24'b10000101_00000000_00000000;
                 out[2] = 24'b10101001_00000000_00000000;
                 out[1] = 24'b01000010_00000000_00000000;
-                out[0] = 24'b00111100_00000000_00000000; 
+                out[0] = 24'b00111100_00000000_00000000;
            end
-           default:;   
+           default:;
         endcase
 endmodule
-

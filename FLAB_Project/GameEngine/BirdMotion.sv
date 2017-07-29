@@ -1,25 +1,24 @@
 
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
+// Company:
+// Engineer:
+//
 // Create Date: 12/06/2016 03:30:57 AM
-// Design Name: 
+// Design Name:
 // Module Name: BirdMotion_Moore
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
+// Project Name:
+// Target Devices:
+// Tool Versions:
+// Description:
+//
+// Dependencies:
+//
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
-
 
 module BirdMotion(input logic up,cont,clk,reset,
                   output logic[23:0] head,
@@ -28,14 +27,14 @@ module BirdMotion(input logic up,cont,clk,reset,
 typedef enum logic[4:0]{S0,S1,S2,S3,S4,S5,S6,S7,S8,S9,
                         S10,S11,S12,S13,S14,S15,S16,S17,
                         S18,S19,S20,S21,S22,S23,S24,S25} stateType;
-                        
+
 stateType[4:0] state,nextState;
 
 always_ff@(posedge clk or posedge reset)
     begin
             state<=(reset)?S8:nextState;
     end
-    
+
 always_comb
     case(state)
         S0: nextState = S0;//(up)?S7:S0;//GAME OVER CASE 1 cause problem because it passes directly S7
@@ -65,8 +64,8 @@ always_comb
         S24: nextState = (!cont)?S24:(up)?S24:S25;
         S25: nextState = (!cont)?S25:(up)?S24:S22;
         default: nextState = S7;
-    endcase   
-    
+    endcase
+
     //assign head[23:8] = {16{1'b0}};
     assign head[0] = (state==S1 | state==S4);
     assign head[1] = (state==S2 | state==S3 | state==S6);
@@ -75,7 +74,7 @@ always_comb
     assign head[4] = (state==S11 | state==S12 | state==S17);
     assign head[5] = (state==S13 | state==S14 | state==S19);
     assign head[6] = (state==S16 | state==S18 | state==S22);
-    assign head[7] = (state==S20 | state==S21);  
+    assign head[7] = (state==S20 | state==S21);
     assign head[15:8] = head[7:0];
     assign head[23:16] = head[7:0];
 
@@ -89,7 +88,7 @@ always_comb
     assign tail[7] = (state==S21 | state==S22 | state==S23);
     assign tail[15:8] = tail[7:0];
     assign tail[23:16] = tail[7:0];
-    
+
     assign gameOver = (state == S0);//collision to boundaries
 
 

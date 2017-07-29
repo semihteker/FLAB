@@ -1,25 +1,24 @@
 
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
+// Company:
+// Engineer:
+//
 // Create Date: 12/10/2016 10:45:09 PM
-// Design Name: 
+// Design Name:
 // Module Name: ObstacleMotion
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
+// Project Name:
+// Target Devices:
+// Tool Versions:
+// Description:
+//
+// Dependencies:
+//
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
-
 
 module ObstacleMotion(input logic[1:0][23:0]inp1,
                       input logic[1:0][23:0]inp0,
@@ -30,23 +29,23 @@ module ObstacleMotion(input logic[1:0][23:0]inp1,
                       output logic[23:0] last,
                       output logic isPassed );
 typedef enum logic [3:0]{init,S0,S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11,S12,S13,S14} stateType;
-stateType [3:0] state,nextState;                          
+stateType [3:0] state,nextState;
 //register
 always_ff@(posedge clk,posedge reset) begin
         state <=(reset)?init:nextState;
 end
-//arranging the position of bird and keep track of last coming obstacle 
+//arranging the position of bird and keep track of last coming obstacle
 always_comb
      case(state)
         init:begin
             out[7:0] = {8{1'b0}};
             nextState = (cont)?S0:init;
-        end    
+        end
         S0:begin
              out[7:1]={7{1'b0}};
              out[0]=inp1[1];
-             last = inp1[1];            
-             nextState =(cont)?S1:S0;        
+             last = inp1[1];
+             nextState =(cont)?S1:S0;
         end
         S1:begin
             out[7:2]={6{1'b0}};
@@ -60,13 +59,13 @@ always_comb
             out[0]=1'b0;
             out[2]=inp1[1];
             out[1]=inp1[0];
-            last = (inp1[1][4:0] > inp1[0][4:0])?inp1[1]:inp1[0]; 
+            last = (inp1[1][4:0] > inp1[0][4:0])?inp1[1]:inp1[0];
             nextState =(cont)?S3:S2;
         end
         S3:begin
             out[7:4]={4{1'b0}};
             out[3]=inp1[1];
-            out[2]=inp1[0]; 
+            out[2]=inp1[0];
             last = (inp1[1][4:0] > inp1[0][4:0])?inp1[1]:inp1[0];
             out[1:0]={2{1'b0}};
             nextState =(cont)?S4:S3;
@@ -120,7 +119,7 @@ always_comb
             out[2]=inp0[0];
             last = (inp0[1][4:0] > inp0[0][4:0])?inp0[1]:inp0[0];
             out[1:0] ={2{1'b0}};
-            nextState =(cont)?S10:S9;  
+            nextState =(cont)?S10:S9;
          end
         S10:begin
             out[7:5]={3{1'b0}};
@@ -128,7 +127,7 @@ always_comb
             out[3]=inp0[0];
             last = (inp0[1][4:0] > inp0[0][4:0])?inp0[1]:inp0[0];
             out[2:0]={3{1'b0}};
-            nextState =(cont)?S11:S10; 
+            nextState =(cont)?S11:S10;
         end
         S11:begin
              out[7:6]={2{1'b0}};
@@ -136,7 +135,7 @@ always_comb
              out[4]=inp0[0];
              last = (inp0[1][4:0] > inp0[0][4:0])?inp0[1]:inp0[0];
              out[3:0]={4{1'b0}};
-             nextState =(cont)?S12:S11; 
+             nextState =(cont)?S12:S11;
         end
         S12:begin
              out[4:1]={4{1'b0}};
@@ -145,7 +144,7 @@ always_comb
              last = (inp0[1][4:0] > inp0[0][4:0])?inp0[1]:inp0[0];
              out[0]=inp1[1];
              out[7]=1'b0;
-             nextState =(cont)?S13:S12; 
+             nextState =(cont)?S13:S12;
          end
          S13:begin
              out[7]=inp0[1];
@@ -154,7 +153,7 @@ always_comb
              out[1]=inp1[1];
              last = (inp0[1][4:0] > inp0[0][4:0])?inp0[1]:inp0[0];
              out[0]=inp1[0];
-             nextState =(cont)?S14:S13; 
+             nextState =(cont)?S14:S13;
          end
          S14:begin
             out[7]=inp0[0];
@@ -167,7 +166,7 @@ always_comb
          end
         default: nextState = S0;
     endcase
-    assign isPassed = (state == S14) | (state == S8);   
+    assign isPassed = (state == S14) | (state == S8);
     assign genRandom1 = (state == S11) | (state == init);
     assign genRandom2 = (state == S5) | (state == init);
 endmodule

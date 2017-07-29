@@ -1,23 +1,23 @@
 
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
+// Company:
+// Engineer:
+//
 // Create Date: 11/05/2016 02:19:29 AM
-// Design Name: 
+// Design Name:
 // Module Name: random_generator
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
+// Project Name:
+// Target Devices:
+// Tool Versions:
+// Description:
+//
+// Dependencies:
+//
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
 
 module random_generator(input logic clk,random,load,mode,
@@ -41,7 +41,7 @@ begin
        3'b111: column1 = (mode)?8'b1100_0111:8'b1110_0011;
        default:column1 = 8'b1110_0011;
     endcase
-    
+
     case(second)
         3'b000: column2 = (mode)?column1:8'b1110_0111;
         3'b001: column2 = (mode)?column1:8'b1000_0011;
@@ -52,7 +52,6 @@ begin
         3'b110: column2 = (mode)?column1:8'b1100_0111;
         3'b111: column2 = (mode)?column1:8'b1110_0011;
         default:column2 = 8'b1110_0011;
-     endcase 
+     endcase
 end
-   
 endmodule
