@@ -1,7 +1,6 @@
 # FLAB
 
-![alt text](https://github.com/sonmezonur/FLAB/blob/master/flab.gif)
-
+![img-20161225-wa0040](https://cloud.githubusercontent.com/assets/12400946/22162330/f17b7a40-df56-11e6-8fa3-2927815ce45e.jpg)
 
 
 Hardware project that is implemented on SystemVerilog using Xilinx Vivado® Design Suite. Extended and modified version of traditional Flappy Bird.
